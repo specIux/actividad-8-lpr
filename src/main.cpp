@@ -103,6 +103,7 @@ public:
 // ====================================================================
 int main() {
     srand(time(NULL));
+    int score = 0;
     string nombrePiloto;
     cout << "Ingresa tu Nombre y Apellido (Se mostrara en la captura de pantalla): ";
     getline(cin, nombrePiloto);
@@ -119,6 +120,7 @@ int main() {
     while (!gameOver) {
         gotoxy(2, 1); cout << "PILOTO: " << nombrePiloto << " ";
         gotoxy(2, 2); cout << "VIDAS: " << jugador.getVidas() << " ";
+        gotoxy(15, 2); cout << "SCORE: " << score << "  ";
         if (_kbhit()) {
             char tecla = tolower(_getch());
             if (tecla == ' ') {
@@ -154,6 +156,7 @@ int main() {
                     balas.erase(balas.begin() + j);
                     asteroides[i]->borrar();
                     asteroides[i] = new Asteroide((rand() % 70) + 2, 4);
+                    score += 10;
                     break;
                 }
             }
